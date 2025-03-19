@@ -1,20 +1,10 @@
-import { environment } from './environments/environment';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { bootstrapApplication, createApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+import { importProvidersFrom } from '@angular/core';
+import { createApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { MFE2_ROUTES } from './app/mfe2.routes';
 import { createCustomElement } from '@angular/elements';
 
-// if (environment.production) {
-//   enableProdMode();
-// }
-
-// bootstrapApplication(AppComponent, {
-//   providers: [
-//     importProvidersFrom(RouterModule.forRoot(MFE2_ROUTES))
-//   ]
-// });
+import { AppComponent } from './app/app.component';
+import { MFE2_ROUTES } from './app/mfe2.routes';
 
 (async () => {
 
