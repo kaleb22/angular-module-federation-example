@@ -9,5 +9,4 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export class AppComponent {
-}
+export class AppComponent { }

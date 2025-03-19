@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { LogService } from '@shared';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,10 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private logService = inject(LogService);
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.logService.log('MFE1 initialized successfully');
   }
 
 }

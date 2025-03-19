@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { LogService } from '@shared';
 
 @Component({
   standalone: true,
@@ -10,7 +12,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app-shell';
+
+  private logService = inject(LogService)
+
+  ngOnInit(): void {
+    this.logService.log('testing logging library');
+  }
 }
 
