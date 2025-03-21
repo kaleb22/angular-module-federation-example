@@ -8,6 +8,14 @@
 
 <main>
   <router-outlet></router-outlet>
+
+  <hr>
+
+  <button (click)="sendMessage()">Click to send a message from Shell</button>
+
+  @if(message) {
+    <p> message displayed in the Shell from MFEs: {{ message }}</p>
+  }
 </main>
 
 
