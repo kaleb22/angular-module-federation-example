@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { LogService, MessageService } from '@shared';
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
+  encapsulation: ViewEncapsulation.ShadowDom,
   imports: [
     RouterModule,
   ]
