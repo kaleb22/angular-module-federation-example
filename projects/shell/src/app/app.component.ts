@@ -11,7 +11,7 @@ import { LogService, MessageService } from '@shared';
     RouterModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app-shell';
