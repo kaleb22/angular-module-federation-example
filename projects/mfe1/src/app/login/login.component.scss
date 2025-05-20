@@ -2,9 +2,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  //background-color: aqua;
   width: 23rem;
-  height: 21rem;
+  min-height: 21rem;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: .5rem;
 }
@@ -45,4 +44,28 @@ form {
     color: rgb(0, 123, 255);
     text-decoration: none;
   }
+}
+
+.has-error {
+  label, p {
+    color: red;
+  }
+
+  input {
+    border: solid 1px red;
+  }
+
+  p {
+    font-size: 10px;
+  }
+}
+
+#login-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
 }
