@@ -6,7 +6,8 @@ router.post('/', (req, res) => {
   .jsonp(
     {
       data: {
-        message: 'login sucessfull'
+        message: 'login sucessfull',
+        userName: 'Vegeta'
       }
     }
   )
