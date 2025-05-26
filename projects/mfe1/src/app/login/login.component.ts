@@ -1,19 +1,33 @@
-import { NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { Login } from './login.interface';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, AsyncPipe],
+  providers: [LoginService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
 
   private formBuilder = inject(FormBuilder);
+  private loginService = inject(LoginService);
 
+  showSpinner = false;
   loginForm: FormGroup;
+  login$ = this.loginService.login$.pipe(
+    tap(res => {
+      this.showSpinner = false;
+      if(!('error' in res)) {
+        console.log('navigate to welcome page');
+      }
+    })
+  );
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -35,6 +49,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.valid);
+    this.showSpinner = true;
+    const loginData: Login = {
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value
+    };
+
+    this.loginService.triggerLogin(loginData);
   }
 }
