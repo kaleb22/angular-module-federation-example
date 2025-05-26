@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.showSpinner = false;
       if(!('error' in res)) {
         this.loginService.setUserName(res.data.userName);
-        this.router.navigate(['/welcome']);
+        this.router.navigate(['mfe1/welcome']);
       }
     })
   );
