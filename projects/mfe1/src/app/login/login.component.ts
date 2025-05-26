@@ -1,15 +1,16 @@
+import { Router } from '@angular/router';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { tap } from 'rxjs/operators';
+
 import { LoginService } from './login.service';
 import { Login } from './login.interface';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, NgClass, AsyncPipe],
-  providers: [LoginService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   private formBuilder = inject(FormBuilder);
   private loginService = inject(LoginService);
+  private router = inject(Router);
 
   showSpinner = false;
   loginForm: FormGroup;
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
     tap(res => {
       this.showSpinner = false;
       if(!('error' in res)) {
-        console.log('navigate to welcome page');
+        this.loginService.setUserName(res.data.userName);
+        this.router.navigate(['/welcome']);
       }
     })
   );

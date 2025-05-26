@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { of, Subject } from "rxjs";
+import { BehaviorSubject, of, Subject } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
 
 import { Login, LoginResponse } from "./login.interface";
@@ -12,11 +12,18 @@ export class LoginService {
   private httpClient = inject(HttpClient);
   private readonly API_PATH = environment.baseURL;
 
-  private formDatasubject = new Subject<Login>();
-  private formDataSubject$ = this.formDatasubject.asObservable();
+  private formDataSubject = new Subject<Login>();
+  private formDataSubject$ = this.formDataSubject.asObservable();
+
+  private userNameSubject = new BehaviorSubject<string>('');
+  userName$ = this.userNameSubject.asObservable();
+
+  setUserName(name: string) {
+    this.userNameSubject.next(name);
+  }
 
   triggerLogin(loginData: Login) {
-    this.formDatasubject.next(loginData);
+    this.formDataSubject.next(loginData);
   }
 
   login$ = this.formDataSubject$.pipe(

@@ -6,6 +6,7 @@ export interface Login {
 export interface LoginResponse {
   data: {
     message: string;
+    userName: string;
   } | null
   error?: {
     code: number,
