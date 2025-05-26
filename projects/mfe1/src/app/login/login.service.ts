@@ -6,7 +6,9 @@ import { catchError, switchMap } from "rxjs/operators";
 import { Login, LoginResponse } from "./login.interface";
 import { environment } from "../../environments/environment";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService {
 
   private httpClient = inject(HttpClient);
