@@ -50,3 +50,6 @@ to run only mfe1:
 ```
 npm run start:mfe1
 ```
+
+Screenshot example:
+![image](https://github.com/user-attachments/assets/15b4e026-38fc-474a-858e-c5aaed477a63)
