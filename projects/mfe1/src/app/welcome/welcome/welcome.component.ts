@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { LoginService } from '../../login/login.service';
@@ -8,7 +8,8 @@ import { LoginService } from '../../login/login.service';
   standalone: true,
   imports: [AsyncPipe],
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.scss'
+  styleUrl: './welcome.component.scss',
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class WelcomeComponent {
 

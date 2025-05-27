@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AsyncPipe, NgClass } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 
@@ -12,7 +12,8 @@ import { Login } from './login.interface';
   standalone: true,
   imports: [ReactiveFormsModule, NgClass, AsyncPipe],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class LoginComponent implements OnInit {
 
