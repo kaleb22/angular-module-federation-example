@@ -1,0 +1,44 @@
+<h1>Login</h1>
+
+<form [formGroup]="loginForm">
+  <div class="flex-container" [ngClass]="checkError('email')">
+    <label for="email">Username or Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="myemail@mail.com"
+      formControlName="email"
+    />
+    @if(verifyValidTouched('email')) {
+      <p>Email field is required and must be a valid email</p>
+    }
+  </div>
+
+  <div class="flex-container" [ngClass]="checkError('password')">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="enter your password"
+      formControlName="password"
+    />
+    @if(verifyValidTouched('password')) {
+      <p>Password field is required and must contain at least one upper case letter and one numeric</p>
+    }
+  </div>
+
+  <button id="login-btn" (click)="login()" [ngClass]="{'disabled': !loginForm.valid}" [disabled]="!loginForm.valid">Log in <span [ngClass]="{'spinner': showSpinner}"></span></button>
+
+  <div class="forgot-password">
+    <a href="#">Forgot your password?</a>
+  </div>
+</form>
+@if(login$ | async; as login) {
+  @if(login.error) {
+    <div class="has-error">
+      <p>Invalid Credentials. Please, try again.</p>
+    </div>
+  }
+}

@@ -1,4 +1,3 @@
-import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
@@ -20,16 +19,6 @@ export const APP_ROUTES: Routes = [
           exposedModule: './routes'
         })
         .then(m => m.MFE1_ROUTES)
-    },
-    {
-      path: 'mfe2',
-      loadChildren: () =>
-        loadRemoteModule({
-          type: 'module',
-          remoteEntry: 'http://localhost:5500/dist/mfe2/remoteEntry.js',
-          exposedModule: './routes'
-        })
-        .then(m => m.MFE2_ROUTES)
     },
     {
       path: '**',

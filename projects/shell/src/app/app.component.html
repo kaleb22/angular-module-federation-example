@@ -1,21 +1,24 @@
-<header>
-  <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/mfe1/home">Mfe Module Federation</a></li>
-      <li><a routerLink="/mfe2/home">Mfe Web Component</a></li>
-  </ul>
-</header>
+<div class="main-container">
+  <header>
+    <div class="title">
+      My Awesome Website
+    </div>
+    <div>
+      <ul>
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/mfe1/login">Login - MFE</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+      </ul>
+    </div>
+  </header>
 
-<main>
-  <router-outlet></router-outlet>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 
-  <hr>
-
-  <button (click)="sendMessage()">Click to send a message from Shell</button>
-
-  @if(message) {
-    <p> message displayed in the Shell from MFEs: {{ message }}</p>
-  }
-</main>
-
+  <footer>
+   Made by Kaleb Dalla
+  </footer>
+</div>
 
